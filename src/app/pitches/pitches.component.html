@@ -1,0 +1,32 @@
+<div class="pitches view indent">
+    <div class="container">
+        <header>
+            <h3>
+                <span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Pitches
+            </h3>
+        </header>
+        <br />
+        <div class="container">
+            <form (ngSubmit)="onSubmit()">
+                Pitch ID:
+                <input type="number" name="pitchID" [(ngModel)]="pitchID" required/>
+                &nbsp;&nbsp;&nbsp;&nbsp;Start Date:
+                <input type="date" name="startDate" [(ngModel)]="startDate" required />
+                &nbsp;&nbsp;&nbsp;&nbsp;End Date:
+                <input type="date" name="endDate" [(ngModel)]="endDate" required/>
+                &nbsp;&nbsp;
+                <button type="submit" class="btn btn-sm btn-success">Find</button>
+            </form>
+
+            <hr />
+
+            <app-pitches-grid *ngIf="pagedPitches"
+                [pitches]="pagedPitches"></app-pitches-grid>
+
+            <app-pagination
+                [totalItems]="totalRecords" 
+                [pageSize]="pageSize" 
+                (pageChanged)="pageChanged($event)"></app-pagination>
+        </div>
+    </div>
+</div>
